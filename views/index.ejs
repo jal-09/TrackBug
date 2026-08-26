@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackBug</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <%- include('partials/flash') %>
+
+    <main class="container py-5">
+        <div class="bt-hero text-center">
+            <h1 class="display-4">Track bugs. Fix faster.</h1>
+            <p class="lead text-muted">A simple way for your team to report, triage, and resolve software issues.</p>
+
+            <div class="mt-4">
+                <% if (locals.username) { %>
+                    <a href="<%= role === 'admin' ? '/admin' : '/dashboard' %>" class="btn btn-primary btn-lg">
+                        Go to Dashboard
+                    </a>
+                <% } else { %>
+                    <a href="/login" class="btn btn-primary btn-lg me-2">Login</a>
+                    <a href="/register" class="btn btn-outline-primary btn-lg">Register</a>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

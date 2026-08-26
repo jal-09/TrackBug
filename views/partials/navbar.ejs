@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bt-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">🐞 TrackBug</a>
+        <div>
+            <% if (locals.username) { %>
+                <span class="text-light me-3">
+                    Hi, <%= username %><% if (role === "admin") { %> (Admin)<% } %>
+                </span>
+                <% if (role === "admin") { %>
+                    <a href="/admin" class="btn btn-outline-light btn-sm me-2">Admin Dashboard</a>
+                <% } else { %>
+                    <a href="/dashboard" class="btn btn-outline-light btn-sm me-2">My Dashboard</a>
+                <% } %>
+                <a href="/logout" class="btn btn-light btn-sm">Logout</a>
+            <% } else { %>
+                <a href="/login" class="btn btn-outline-light btn-sm me-2">Login</a>
+                <a href="/register" class="btn btn-light btn-sm">Register</a>
+            <% } %>
+        </div>
+    </div>
+</nav>

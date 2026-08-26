@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TrackBug</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <%- include('partials/flash') %>
+
+    <main class="container py-5">
+        <h2 class="mb-4">Admin Dashboard — All Bugs</h2>
+
+        <% if (bugs.length === 0) { %>
+            <div class="card">
+                <div class="card-body text-center text-muted py-5">
+                    No bugs have been reported yet.
+                </div>
+            </div>
+        <% } else { %>
+            <div class="card">
+                <table class="table table-hover mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Reported By</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Assigned To</th>
+                            <th>Reported</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% bugs.forEach(bug => { %>
+                            <tr>
+                                <td><%= bug.title %></td>
+                                <td><%= bug.reporterId ? bug.reporterId.name : "Unknown" %></td>
+                                <td><span class="badge bg-secondary"><%= bug.category %></span></td>
+                                <td>
+                                    <span class="badge bg-<%= bug.status === 'Open' ? 'danger' : bug.status === 'In Progress' ? 'warning' : 'success' %>">
+                                        <%= bug.status %>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-<%= bug.priority === 'High' ? 'danger' : bug.priority === 'Medium' ? 'warning' : 'success' %>">
+                                        <%= bug.priority %>
+                                    </span>
+                                </td>
+                                <td><%= bug.assignedTo ? bug.assignedTo.name : "Unassigned" %></td>
+                                <td><%= new Date(bug.created_at).toLocaleDateString() %></td>
+                                <td><a href="/admin/bug/<%= bug._id %>" class="btn btn-sm btn-outline-primary">Manage</a></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } %>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

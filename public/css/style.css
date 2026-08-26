@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --bt-primary: #4338ca;
+    --bt-primary-dark: #3730a3;
+    --bt-bg: #f4f5fb;
+    --bt-surface: #ffffff;
+    --bt-border: #e5e7ff;
+    --bt-text: #1e1b3a;
+    --bt-muted: #6b7280;
+}
+
+body {
+    background-color: var(--bt-bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--bt-text);
+}
+
+h1, h2, h3, h4, .navbar-brand {
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    min-height: 80vh;
+}
+
+/* Navbar */
+.navbar.bt-navbar {
+    background: linear-gradient(90deg, var(--bt-primary) 0%, var(--bt-primary-dark) 100%);
+}
+
+.navbar-brand {
+    letter-spacing: -0.5px;
+    font-weight: 700;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--bt-primary);
+    border-color: var(--bt-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--bt-primary-dark);
+    border-color: var(--bt-primary-dark);
+}
+
+.btn-outline-primary {
+    color: var(--bt-primary);
+    border-color: var(--bt-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--bt-primary);
+    border-color: var(--bt-primary);
+}
+
+/* Cards */
+.card {
+    border: 1px solid var(--bt-border);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 10px rgba(67, 56, 202, 0.06);
+}
+
+.card-body h5.card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Table */
+.table-hover tbody tr:hover {
+    background-color: #f0f1fd;
+    cursor: default;
+}
+
+.table thead.table-dark {
+    background-color: var(--bt-primary-dark);
+}
+
+/* Hero section */
+.bt-hero {
+    background: linear-gradient(135deg, #eef0fd 0%, #f9f5ff 100%);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+}
+
+.bt-hero h1 {
+    font-weight: 700;
+    color: var(--bt-primary-dark);
+}
+
+/* Badges — a bit softer/rounder than default Bootstrap */
+.badge {
+    font-weight: 500;
+    padding: 0.4em 0.7em;
+    border-radius: 0.5rem;
+}
+
+/* Auth forms */
+.bt-auth-card {
+    border-radius: 1rem;
+}
