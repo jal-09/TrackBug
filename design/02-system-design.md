@@ -100,6 +100,12 @@ target for a concrete, low-effort improvement (validate the submitted `status` a
 transitions from the bug's current state, server-side) that directly strengthens NFR2 — a good
 candidate for the "make a change and propagate it" part of the live demonstration.
 
+**Addendum — gap closed:** `routes/admin.js` now enforces exactly this. See Requirements CL-9.
+Forward moves through `Open → In Progress → Resolved` (including skipping a stage) are allowed;
+any backward move is rejected server-side with a flash message, before the database write. This
+paragraph is left in place, unedited, as the record of what the gap analysis originally found —
+CL-9 is where the fix itself is logged.
+
 ## Traceability Summary
 
 | Design artefact | Requirements it satisfies |

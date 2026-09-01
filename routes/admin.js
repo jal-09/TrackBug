@@ -66,6 +66,18 @@ router.post("/bug/:id", async (req, res) => {
             return res.redirect(`/admin/bug/${req.params.id}`);
         }
 
+        // Enforce the intended lifecycle (System Design, State Diagram page):
+        // status only ever moves forward through Open -> In Progress -> Resolved.
+        // Reopening a resolved bug is out of scope (Requirements CL-6, BT-10 cut),
+        // so a backward move is rejected server-side rather than silently allowed.
+        const currentIndex = Bug.STATUSES.indexOf(bug.status);
+        const newIndex = Bug.STATUSES.indexOf(status);
+
+        if (newIndex < currentIndex) {
+            req.flash(`Cannot move a bug from "${bug.status}" back to "${status}".`);
+            return res.redirect(`/admin/bug/${req.params.id}`);
+        }
+
         bug.priority = priority;
         bug.status = status;
         bug.assignedTo = req.session.userId;
